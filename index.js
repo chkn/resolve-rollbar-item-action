@@ -28,6 +28,7 @@ const main = async () => {
 		if (!itemId) {
 			throw new Error(`Could not find item ID for counter ${itemCounter}`);
 		}
+		core.debug(`Got item ID: ${itemId}`);
 
 		const response2 = await rollbar.patch(
 			`https://api.rollbar.com/api/1/item/${itemId}`,
