@@ -1,0 +1,9 @@
+name: 'Resolve Rollbar Item'
+description: 'Resolves the Rollbar item linked to the given issue body. The issue must have been created by the Rollbar GitHub integration, and the body must not have been edited except to add content before or after the default Rollbar-provided content.'
+inputs:
+  body:
+    description: 'The body from an issue created by the Rollbar GitHub integration'
+    required: true
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
