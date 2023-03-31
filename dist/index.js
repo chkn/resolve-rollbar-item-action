@@ -2874,7 +2874,7 @@ const main = async () => {
 
 		await rollbar.patchJson(
 			`https://api.rollbar.com/api/1/item/${itemId}`,
-			'{"status": "resolved"}',
+			{"status": "resolved"},
 			{ [http.Headers.ContentType]: "application/json" }
 		);
 		// the above should throw if not successful
