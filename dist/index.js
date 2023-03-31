@@ -2860,7 +2860,7 @@ const main = async () => {
 			`https://api.rollbar.com/api/1/item_by_counter/${itemCounter}`,
 			{ [http.Headers.Accept]: "application/json" }
 		);
-		const itemId = response1.result?.itemId;
+		const itemId = response1.result?.result?.itemId;
 		if (!itemId) {
 			throw new Error(`Could not find item ID for counter ${itemCounter}`);
 		}
