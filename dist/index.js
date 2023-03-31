@@ -2856,10 +2856,16 @@ const main = async () => {
 			}
 		});
 
-		const response1 = await rollbar.getJson(
-			`https://api.rollbar.com/api/1/item_by_counter/${itemCounter}`,
-			{ [http.Headers.Accept]: "application/json" }
-		);
+		// sadly this comes through as an error because we set allowRedirects: false
+		let response1;
+		try {
+			response1 = await rollbar.getJson(
+				`https://api.rollbar.com/api/1/item_by_counter/${itemCounter}`,
+				{ [http.Headers.Accept]: "application/json" }
+			);
+		} catch (err) {
+			response1 = err;
+		}
 		const itemId = response1.result?.result?.itemId;
 		if (!itemId) {
 			throw new Error(`Could not find item ID for counter ${itemCounter}`);
