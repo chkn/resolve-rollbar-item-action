@@ -20,7 +20,7 @@ const main = async () => {
 		const response1 = await rollbar.getJson(
 			`https://api.rollbar.com/api/1/item_by_counter/${itemCounter}`,
 			{
-				"X-Rollbar-Access-Token:": token,
+				"X-Rollbar-Access-Token": token,
 				[http.Headers.Accept]: "application/json"
 			}
 		);
@@ -33,7 +33,7 @@ const main = async () => {
 			`https://api.rollbar.com/api/1/item/${itemId}`,
 			'{"status": "resolved"}',
 			{
-				"X-Rollbar-Access-Token:": token,
+				"X-Rollbar-Access-Token": token,
 				[http.Headers.ContentType]: "application/json"
 			}
 		);
