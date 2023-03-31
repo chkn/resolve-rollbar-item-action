@@ -2872,16 +2872,13 @@ const main = async () => {
 		}
 		core.debug(`Got item ID: ${itemId}`);
 
-		const response2 = await rollbar.patch(
+		await rollbar.patchJson(
 			`https://api.rollbar.com/api/1/item/${itemId}`,
 			'{"status": "resolved"}',
 			{ [http.Headers.ContentType]: "application/json" }
 		);
-		if (response2.statusCode !== 200) {
-			throw new Error(`Could not resolve item ${itemId}: ${response2.message}`);
-		} else {
-			core.info(`Resolved item ${itemId}`);
-		}
+		// the above should throw if not successful
+		core.info(`Resolved item ${itemId}`);
 	} else {
 		core.info('No Rollbar item link found');
 	}
